@@ -76,8 +76,8 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
 gem 'haml-rails', '~> 2.0'
-gem 'rubocop-rails', require: false
 gem 'jquery-rails'
-gem 'bootstrap', '~> 5.1.3'
+gem 'rubocop-rails', require: false
