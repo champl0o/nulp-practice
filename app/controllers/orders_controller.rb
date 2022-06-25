@@ -10,25 +10,20 @@ class OrdersController < ApplicationController
     @products_subscription = @products - @products_purchase
   end
 
-  def submit
+  def submit # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     @order = nil
     # Check which type of order it is
-    if order_params[:payment_gateway] == 'stripe'
+    case order_params[:payment_gateway]
+    when 'stripe'
       prepare_new_order
       Orders::Stripe.execute(order: @order, user: current_user)
-    elsif order_params[:payment_gateway] == 'paypal'
+    when 'paypal'
       # Paypal
     end
-  
   ensure
     if @order&.save
-      if @order.paid?
-        # Success is rendered when order is paid and saved
-        return render html: SUCCESS_MESSAGE
-      elsif @order.failed? && !@order.error_message.blank?
-        # Render error only if order failed and there is an error_message
-        return render html: @order.error_message
-      end
+      return render html: SUCCESS_MESSAGE if @order.paid?
+      return render html: @order.error_message if @order.failed? && @order.error_message.present?
     end
     render html: FAILURE_MESSAGE
   end
