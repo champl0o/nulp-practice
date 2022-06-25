@@ -1,5 +1,8 @@
 # frozen_string_literal: true
-class Orders::Stripe
+
+# I would wrap it in some abstraction like PaymentProvider::Stripe::Orders but I would leave it as it is because of
+# the guide I`m following
+class Orders::Stripe # rubocop:disable Style/ClassAndModuleChildren
   INVALID_STRIPE_OPERATION = 'Invalid Stripe Operation'
   def self.execute(order:, user:) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     product = order.product
@@ -11,8 +14,8 @@ class Orders::Stripe
                               card_token: order.token)
     else
       customer = find_or_create_customer(card_token: order.token,
-                                          customer_id: user.stripe_customer_id,
-                                          email: user.email)
+                                         customer_id: user.stripe_customer_id,
+                                         email: user.email)
       if customer
         user.update(stripe_customer_id: customer.id)
         order.customer_id = customer.id
