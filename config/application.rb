@@ -20,9 +20,5 @@ module Nulppractice
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config_file = Rails.application.config_for(:application)
-    config_file&.each do |key, value|
-      ENV[key.to_s] = value
-    end
   end
 end

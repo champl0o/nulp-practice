@@ -78,6 +78,7 @@ end
 
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'money-rails'
