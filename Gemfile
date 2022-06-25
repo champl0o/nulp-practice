@@ -81,3 +81,5 @@ gem 'devise'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'rubocop-rails', require: false
+gem 'stripe-rails'
+gem "money-rails"
