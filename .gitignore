@@ -36,5 +36,3 @@
 
 # Ignore environment variables
 .env
-
-/config/application.yml
