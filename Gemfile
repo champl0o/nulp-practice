@@ -84,3 +84,4 @@ gem 'jquery-rails'
 gem 'money-rails'
 gem 'rubocop-rails', require: false
 gem 'stripe-rails'
+gem 'paypal-sdk-rest'
