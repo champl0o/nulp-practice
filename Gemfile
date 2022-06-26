@@ -82,6 +82,6 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'money-rails'
+gem 'paypal-sdk-rest'
 gem 'rubocop-rails', require: false
 gem 'stripe-rails'
-gem 'paypal-sdk-rest'

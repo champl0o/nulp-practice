@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :prepare_new_order, only: [:paypal_create_payment, :paypal_create_subscription]
+  before_action :prepare_new_order, only: %i[paypal_create_payment paypal_create_subscription]
 
   SUCCESS_MESSAGE = 'Order Performed Successfully!'
   FAILURE_MESSAGE = 'Oops something went wrong. Please call the administrator'
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     @products_subscription = @products - @products_purchase
   end
 
-  def submit # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def submit # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/AbcSize
     @order = nil
     # Check which type of order it is
     case order_params[:payment_gateway]
@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     if result
       render json: { token: result }, status: :ok
     else
-      render json: {error: FAILURE_MESSAGE}, status: :unprocessable_entity
+      render json: { error: FAILURE_MESSAGE }, status: :unprocessable_entity
     end
   end
 
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
     if Orders::Paypal.execute_payment(payment_id: params[:paymentID], payer_id: params[:payerID])
       render json: {}, status: :ok
     else
-      render json: {error: FAILURE_MESSAGE}, status: :unprocessable_entity
+      render json: { error: FAILURE_MESSAGE }, status: :unprocessable_entity
     end
   end
 
@@ -52,16 +52,16 @@ class OrdersController < ApplicationController
     if result
       render json: { token: result }, status: :ok
     else
-      render json: {error: FAILURE_MESSAGE}, status: :unprocessable_entity
+      render json: { error: FAILURE_MESSAGE }, status: :unprocessable_entity
     end
   end
 
   def paypal_execute_subscription
     result = Orders::Paypal.execute_subscription(token: params[:subscriptionToken])
     if result
-      render json: { id: result}, status: :ok
+      render json: { id: result }, status: :ok
     else
-      render json: {error: FAILURE_MESSAGE}, status: :unprocessable_entity
+      render json: { error: FAILURE_MESSAGE }, status: :unprocessable_entity
     end
   end
 
