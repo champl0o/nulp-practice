@@ -5,15 +5,6 @@ User.create(email: 'test@nulp.ua', password: '123456')
 Product.create(name: 'Awesome T-Shirt', price_cents: 3000)
 Product.create(name: 'Awesome Sneakers', price_cents: 5000)
 
-Stripe::Plan.create({
-                      amount: 10_000,
-                      interval: 'month',
-                      product: {
-                        name: 'Premium plan'
-                      },
-                      currency: 'usd',
-                      id: 'premium-plan'
-                    })
 Product.create(price_cents: 10_000, name: 'Premium Plan', stripe_plan_name: 'premium-plan')
 
 req = Rails.env.production? ? ActionDispatch::Request.new('HTTP_HOST' => 'api-integration-app.herokuapp.com') : ActionDispatch::Request.new('HTTP_HOST' => 'localhost:3000') # rubocop:disable Layout/LineLength
@@ -49,4 +40,4 @@ plan_update = {
   }
 }
 plan.update(plan_update)
-Product.last.update(paypal_plan_name: plan.id)
+Product.last.update(paypal_plan_name: "P-8VK79727R34714328T627BHQ")
