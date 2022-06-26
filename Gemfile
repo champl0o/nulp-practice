@@ -83,5 +83,6 @@ gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'money-rails'
 gem 'paypal-sdk-rest'
+gem 'rails_12factor', group: :production
 gem 'rubocop-rails', require: false
 gem 'stripe-rails'
