@@ -2,7 +2,9 @@
 
 class OrdersController < ApplicationController
   before_action :prepare_new_order, only: %i[paypal_create_payment paypal_create_subscription]
-  skip_before_action :verify_authenticity_token, only: [:paypal_create_payment, :paypal_execute_payment, :paypal_create_subscription, :paypal_execute_subscription]
+  skip_before_action :verify_authenticity_token,
+                     only: %i[paypal_create_payment paypal_execute_payment paypal_create_subscription
+                              paypal_execute_subscription]
 
   SUCCESS_MESSAGE = 'Order Performed Successfully!'
   FAILURE_MESSAGE = 'Oops something went wrong. Please call the administrator'
