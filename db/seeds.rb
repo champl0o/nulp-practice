@@ -40,4 +40,4 @@ plan_update = {
   }
 }
 plan.update(plan_update)
-Product.last.update(paypal_plan_name: "P-8VK79727R34714328T627BHQ")
+Product.last.update(paypal_plan_name: plan.id)
