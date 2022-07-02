@@ -4,7 +4,7 @@
 # the guide I`m following
 class Orders::Stripe # rubocop:disable Style/ClassAndModuleChildren
   INVALID_STRIPE_OPERATION = 'Invalid Stripe Operation'
-  def self.execute(order:, user:) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def self.execute(order:, user:)
     product = order.product
 
     # Check if the order is a plan

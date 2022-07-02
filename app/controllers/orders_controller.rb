@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @products_subscription = @products - @products_purchase
   end
 
-  def submit # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/AbcSize
+  def submit # rubocop:disable Metrics/CyclomaticComplexity
     @order = nil
     # Check which type of order it is
     case order_params[:payment_gateway]

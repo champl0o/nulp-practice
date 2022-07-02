@@ -79,10 +79,12 @@ end
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'faker'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'money-rails'
 gem 'paypal-sdk-rest'
 gem 'rails_12factor', group: :production
+gem 'rails-controller-testing'
 gem 'rubocop-rails', require: false
 gem 'stripe-rails'

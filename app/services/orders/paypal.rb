@@ -11,7 +11,7 @@ class Orders::Paypal # rubocop:disable Style/ClassAndModuleChildren
     order
   end
 
-  def self.create_payment(order:, product:) # rubocop:disable Metrics/MethodLength
+  def self.create_payment(order:, product:)
     payment_price = (product.price_cents / 100.0).to_s
     currency = 'USD'
     payment = PayPal::SDK::REST::Payment.new({
@@ -58,7 +58,7 @@ class Orders::Paypal # rubocop:disable Style/ClassAndModuleChildren
     end
   end
 
-  def self.create_subscription(order:, product:) # rubocop:disable Metrics/MethodLength
+  def self.create_subscription(order:, product:)
     agreement = PayPal::SDK::REST::Agreement.new({
                                                    name: product.name,
                                                    description: "Subscription for: #{product.name}",
